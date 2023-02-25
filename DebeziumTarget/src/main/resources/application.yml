@@ -21,16 +21,3 @@ debezium:
     database: debmpys
     username: postgres
     password: postgres
-
-  ## Logging properties
-#logging:
-#  level:
-#    root: INFO
-#    io:
-#      debezium:
-#        mysql:
-#          BinlogReader: INFO
-#    com:
-#      baeldung:
-#        libraries:
-#          debezium: DEBUG
