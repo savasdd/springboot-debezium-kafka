@@ -14,7 +14,7 @@ spring:
 #    show-sql: true
 
 ## Source Database Properties
-customer:
+debezium:
   datasource:
     host: 127.0.0.1
     port: 5433
