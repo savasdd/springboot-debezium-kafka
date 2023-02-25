@@ -28,6 +28,11 @@ public class Personel {
     @JsonIgnoreProperties(value = { "applications", "hibernateLazyInitializer" })
     private Unit unit;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "STATE_CODE", referencedColumnName = "ID")
+    @JsonIgnoreProperties(value = { "applications", "hibernateLazyInitializer" })
+    private Parameter parameter;
+
     @Version
     @Column(name = "VERSION")
     private Long version;

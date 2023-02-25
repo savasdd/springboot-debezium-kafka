@@ -1,5 +1,6 @@
 package com.debezium.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,6 +23,11 @@ public class Unit {
 
     @Column(name = "KOD")
     private String kod;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "VALID_CODE", referencedColumnName = "ID")
+    @JsonIgnoreProperties(value = { "applications", "hibernateLazyInitializer" })
+    private Parameter parameter;
 
     @Version
     @Column(name = "VERSION")
