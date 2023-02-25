@@ -2,6 +2,7 @@ package com.debezium.service.impl;
 
 import com.debezium.dto.UnitDto;
 import com.debezium.model.Unit;
+import com.debezium.repository.ParameterRepository;
 import com.debezium.repository.UnitRepository;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,6 +21,7 @@ import java.util.Optional;
 public class UnitServiceImpl {
 
     private final UnitRepository repository;
+    private final ParameterRepository parameter;
 
     public void replicateData(Map<String, Object> data, Envelope.Operation operation) {
         final ObjectMapper mapper = new ObjectMapper();
@@ -52,6 +54,7 @@ public class UnitServiceImpl {
         model.setName(dto.getName());
         model.setKod(dto.getKod());
         model.setConcat(concat);
+        model.setParameter((dto.getValidCode()!=null && dto.getValidCode().getId()!=null)?parameter.findById(dto.getValidCode().getId()).get():null);
         repository.save(model);
     }
 
@@ -62,6 +65,7 @@ public class UnitServiceImpl {
 
     private Unit dataMapDto(UnitDto dto){
         return Unit.builder().unitId(dto.getUnitId()).ustUnitId(dto.getUstUnitId())
-                .name(dto.getName()).kod(dto.getKod()).build();
+                .name(dto.getName()).kod(dto.getKod())
+                .parameter((dto.getValidCode()!=null && dto.getValidCode().getId()!=null)?parameter.findById(dto.getValidCode().getId()).get():null).build();
     }
 }

@@ -24,6 +24,9 @@ public class UnitDto {
     @JsonProperty("kod")
     private String kod;
 
+    @JsonProperty("valid_code")
+    private ParameterDto validCode;
+
     @JsonProperty("version")
     private Long version;
 
