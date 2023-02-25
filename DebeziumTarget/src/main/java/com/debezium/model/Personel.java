@@ -35,7 +35,7 @@ public class Personel {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STATE_CODE", referencedColumnName = "ID")
     @JsonIgnoreProperties(value = { "applications", "hibernateLazyInitializer" })
-    private Parameter parameter;
+    private Parameter stateCode;
 
     @Version
     @Column(name = "VERSION")

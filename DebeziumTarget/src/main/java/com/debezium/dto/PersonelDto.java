@@ -1,5 +1,6 @@
 package com.debezium.dto;
 
+import com.debezium.model.Parameter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -24,6 +25,9 @@ public class PersonelDto {
 
     @JsonProperty("unit")
     private UnitPersDto unit;
+
+    @JsonProperty("state_code")
+    private ParameterDto stateCode;
 
     @JsonProperty("version")
     private Long version;

@@ -35,7 +35,7 @@ public class Unit {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "VALID_CODE", referencedColumnName = "ID")
     @JsonIgnoreProperties(value = { "applications", "hibernateLazyInitializer" })
-    private Parameter parameter;
+    private Parameter validCode;
 
     @Version
     @Column(name = "VERSION")

@@ -3,6 +3,7 @@ package com.debezium.service.impl;
 import com.debezium.dto.PersonelDto;
 import com.debezium.model.Personel;
 import com.debezium.model.Unit;
+import com.debezium.repository.ParameterRepository;
 import com.debezium.repository.PersonelRepository;
 import com.debezium.repository.UnitRepository;
 import com.fasterxml.jackson.databind.DeserializationConfig;
@@ -24,6 +25,7 @@ public class PersonelServiceImpl {
 
     private final PersonelRepository repository;
     private final UnitRepository unitRepository;
+    private final ParameterRepository parameter;
 
     public void replicateData(Map<String, Object> data, Envelope.Operation operation) {
         final ObjectMapper mapper = new ObjectMapper();
@@ -51,6 +53,7 @@ public class PersonelServiceImpl {
         model.setName(dto.getName());
         model.setSurname(dto.getSurname());
         model.setUnit(dto.getUnit().getUnitId()!=null?unitRepository.findById(dto.getUnit().getUnitId()).get():null);
+        model.setStateCode((dto.getStateCode()!=null && dto.getStateCode().getId()!=null)?parameter.findById(dto.getStateCode().getId()).get():null);
         repository.save(model);
     }
 
@@ -63,6 +66,7 @@ public class PersonelServiceImpl {
         return Personel.builder().personelId(dto.getPersonelId()).name(dto.getName())
                 .surname(dto.getSurname())
                 .unit(dto.getUnit().getUnitId()!=null?unitRepository.findById(dto.getUnit().getUnitId()).get():null)
+                .stateCode((dto.getStateCode()!=null && dto.getStateCode().getId()!=null)?parameter.findById(dto.getStateCode().getId()).get():null)
                 .build();
     }
 

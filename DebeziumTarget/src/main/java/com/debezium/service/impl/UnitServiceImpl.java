@@ -54,7 +54,7 @@ public class UnitServiceImpl {
         model.setName(dto.getName());
         model.setKod(dto.getKod());
         model.setConcat(concat);
-        model.setParameter((dto.getValidCode()!=null && dto.getValidCode().getId()!=null)?parameter.findById(dto.getValidCode().getId()).get():null);
+        model.setValidCode((dto.getValidCode()!=null && dto.getValidCode().getId()!=null)?parameter.findById(dto.getValidCode().getId()).get():null);
         repository.save(model);
     }
 
@@ -66,6 +66,6 @@ public class UnitServiceImpl {
     private Unit dataMapDto(UnitDto dto){
         return Unit.builder().unitId(dto.getUnitId()).ustUnitId(dto.getUstUnitId())
                 .name(dto.getName()).kod(dto.getKod())
-                .parameter((dto.getValidCode()!=null && dto.getValidCode().getId()!=null)?parameter.findById(dto.getValidCode().getId()).get():null).build();
+                .validCode((dto.getValidCode()!=null && dto.getValidCode().getId()!=null)?parameter.findById(dto.getValidCode().getId()).get():null).build();
     }
 }
