@@ -1,0 +1,36 @@
+server:
+  port: 8085
+
+## Target Database Properties
+spring:
+  data:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/debperformans
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+#    show-sql: true
+
+## Source Database Properties
+customer:
+  datasource:
+    host: 127.0.0.1
+    port: 5433
+    database: debmpys
+    username: postgres
+    password: postgres
+
+  ## Logging properties
+#logging:
+#  level:
+#    root: INFO
+#    io:
+#      debezium:
+#        mysql:
+#          BinlogReader: INFO
+#    com:
+#      baeldung:
+#        libraries:
+#          debezium: DEBUG

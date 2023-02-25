@@ -1,0 +1,21 @@
+
+
+https://github.com/eugenp/tutorials/blob/master/libraries-data-db/pom.xml
+https://dzone.com/articles/change-data-capture-cdc-with-embedded-debezium-and
+https://hevodata.com/learn/debezium-spring-boot/
+https://debezium.io/documentation/reference/connectors/postgresql.html#postgresql-server-configuration
+
+wal_level=logical
+max_wal_senders=1
+max_replication_slots=1
+shared_preload_libraries = 'decoderbufs'
+
+300
+205
+158
+
+sudo docker exec -it <container-id> /bin/bash
+vi var/lib/postgresql/data/postgresql.conf
+
+
+Key = 'Struct{id=2}' value = 'Struct{after=Struct{id=2,email=email2,name=özlem},source=Struct{version=1.4.2.Final,connector=postgresql,name=customer-postgres-db-server,ts_ms=1677304698885,snapshot=true,db=debmpys,schema=public,table=customer,txId=756,lsn=24575424},op=r,ts_ms=1677304698892}'
