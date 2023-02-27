@@ -1,5 +1,3 @@
-
-
 https://github.com/eugenp/tutorials/blob/master/libraries-data-db/pom.xml
 https://dzone.com/articles/change-data-capture-cdc-with-embedded-debezium-and
 https://hevodata.com/learn/debezium-spring-boot/
@@ -16,6 +14,18 @@ shared_preload_libraries = 'decoderbufs'
 
 sudo docker exec -it <container-id> /bin/bash
 vi var/lib/postgresql/data/postgresql.conf
+docker restart id
+docker-compose -f docker-compose.yml
 
 
-Key = 'Struct{id=2}' value = 'Struct{after=Struct{id=2,email=email2,name=özlem},source=Struct{version=1.4.2.Final,connector=postgresql,name=customer-postgres-db-server,ts_ms=1677304698885,snapshot=true,db=debmpys,schema=public,table=customer,txId=756,lsn=24575424},op=r,ts_ms=1677304698892}'
+Problem:
+https://levelup.gitconnected.com/fixing-debezium-connectors-when-they-break-on-production-49fb52d6ac4e
+Problem II: Database Host changes
+
+OutBox pattern.
+https://dzone.com/articles/implementing-the-outbox-pattern
+
+
+table.exclude.list and table.include.list
+snapshot.isolation.mode
+initial snapshot

@@ -33,7 +33,7 @@ public class PersonelServiceImpl {
         }
         dto.setParameter(dto.getParameter().getId()!=null?parameter.findById(dto.getParameter().getId()).get():null);
         var model=repository.save(dto);
-        log.info("create Personel {}",model);
+        log.info("create Personel {}",model.getPersonelId());
     }
 
     public void update(UUID id , Personel dto){
@@ -46,7 +46,7 @@ public class PersonelServiceImpl {
             return val;
         });
         var model=repository.save(newUnit.get());
-        log.info("update Personel {}",model);
+        log.info("update Personel {}",model.getPersonelId());
     }
 
     public void delete(UUID id){

@@ -25,7 +25,7 @@ public class UnitServiceImpl {
         dto.setVersion(0L);
         dto.setParameter(dto.getParameter().getId()!=null?parameter.findById(dto.getParameter().getId()).get():null);
         var model=repository.save(dto);
-        log.info("create unit {}",model);
+        log.info("create unit {}",model.getUnitId());
     }
 
     public void update(Long id ,Unit dto){
@@ -38,7 +38,7 @@ public class UnitServiceImpl {
             return val;
         });
         var model=repository.save(newUnit.get());
-        log.info("update unit {}",model);
+        log.info("update unit {}",model.getUnitId());
     }
 
     public void delete(Long id){
